@@ -106,6 +106,8 @@ Plugin 'rakr/vim-one'
 Plugin 'fatih/vim-go', { 'tag': '*' }
 " go 中的代码追踪，输入 gd 就可以自动跳转
 Plugin 'dgryski/vim-godef'
+" go 中代码提示
+Plugin 'nsf/gocode', {'rtp': 'vim/'}
 
 " markdown 插件
 Plugin 'iamcco/mathjax-support-for-mkdp'
