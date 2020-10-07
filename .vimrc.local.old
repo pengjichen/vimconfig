@@ -1,0 +1,193 @@
+"----------------------------------------------------------------
+"vimrc.local
+"----------------------------------------------------------------
+
+
+" 常用配置: 文件编码 自动换行 折叠 拼写检查 标签
+"----------------------------------------------------------------
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936        " 文件编码格式
+set termencoding=utf-8
+set encoding=utf-8
+set wrap                                                        " 设置自动换行
+set foldmethod=indent                                           " 折叠
+set foldlevelstart=99                                           " 设置折叠级别 用于取消打开就折叠
+
+
+" set spell                                                     " 开启语法检查
+set nospell                                                     " 关闭语法检查
+
+" 标签页操作快捷键
+nmap nex    :tabnext<CR>
+nmap pre    :tabprevious<CR>
+nmap new    :tabnew<CR>
+
+" ESC 可用ctrl + c代替，vim默认配置中已有
+" ESC 使用kl替换
+inoremap kl <ESC>
+
+" 保存 使用hj替换
+inoremap hj <ESC>:w<CR>
+noremap hj :w<CR>
+
+" airline 状态栏
+set laststatus=2                                                " 永远显示状态栏
+set t_Co=256                                                    " 在windows中用xshell连接打开vim可以显示色彩
+let g:airline_theme='luna'                                      " 状态栏主题
+
+
+" tab 4个空格
+set ts=4
+set expandtab
+set autoindent
+
+
+syntax enable                                                   " 语法高亮
+set background=dark
+colorscheme solarized
+" colorscheme molokai
+
+set fdm=syntax
+
+" 保存快捷键
+nmap fs :w!<CR>
+"nmap <c-s> :w!<CR>                                             " control + s 被系统快捷键占用，无法在vim配置文件中使用
+" vmap <C-S> <C-C>:w!<CR>
+" nmap <C-S> :w!<CR>i
+
+
+nmap ag     :Ack
+
+
+" molokai主题插件
+"----------------------------------------------------------------
+Plugin 'tomasr/molokai'                     " 配色 molokai
+
+
+
+" c/c++插件
+"----------------------------------------------------------------
+Plugin 'a.vim'                              " 头文件和源文件切换
+Plugin 'octol/vim-cpp-enhanced-highlight'   " 自定义类型 变量的语法高亮
+
+"cpp-enhanced-highlight
+"高亮类，成员函数，标准库和模板
+"let g:cpp_class_scope_highlight = 1
+"let g:cpp_member_variable_highlight = 1
+"let g:cpp_concepts_highlight = 1
+"let g:cpp_experimental_simple_template_highlight = 1
+"文件较大时使用下面的设置高亮模板速度较快，但会有一些小错误
+"let g:cpp_experimental_template_highlight = 1
+
+
+
+
+" 玩具插件
+"----------------------------------------------------------------
+Plugin 'matrix.vim--Yang'                   " 黑客帝国屏幕字符流效果
+
+
+
+" golang插件
+"----------------------------------------------------------------
+Plugin 'fatih/vim-go'
+Plugin 'vim-scripts/TagHighlight'          " 自定义类型 变量的语法高亮
+
+"go tagbar
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
+
+
+
+" markdown插件
+"----------------------------------------------------------------
+Plugin 'suan/vim-instant-markdown'          " 实时预览
+Plugin 'mzlogin/vim-markdown-toc'
+
+" markdown大纲插件
+" apt install exuberant-ctags
+
+"Plugin 'majutsushi/tagbar'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
+Plugin 'jszakmeister/markdown2ctags'
+
+" 自定义代码段
+Plugin 'Sirver/ultisnips'
+"Plugin 'honza/vim-snippets'
+"----------------------------------------------------------------
+"----------------------------------------------------------------
+
+" markdown预览配置
+" https://github.com/suan/vim-instant-markdown
+" start command: InstantMarkdownPreview InstantMarkdownStop
+" stop command: InstantMarkdownStop
+
+" 关闭自动打开预览
+let g:instant_markdown_autostart = 0
+
+" 设置预览快捷键exp
+map exp     :InstantMarkdownPreview<CR>
+
+
+
+" NERDTree插件
+"----------------------------------------------------------------
+nmap tr :NERDTreeToggle<cr>
+nmap ta :TagbarToggle<CR>
+let NERDTreeQuitOnOpen=0
+let NERDTreeWinSize=40
+set mouse=a
+
+
+
+
+" ctags配置
+"----------------------------------------------------------------
+set tags=tags
+set tags+=./tags                            " 表示在当前工作目录下搜索tags文件
+set tags+=/Users/pjc/lib/tags               " 三方库和系统库路径
+map tags :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+nmap ts     :<ESC>g<C-]>
+
+
+"\ 'ctagsbin' : '/Users/pjc/.vim/bundle/markdown2ctags/markdown2ctags.py',
+" Add support for markdown files in tagbar.
+let g:tagbar_type_markdown = {
+    \ 'ctagstype': 'markdown',
+    \ 'ctagsbin' : '/Users/pjc/.vim/bundle/markdown2ctags/markdown2ctags.py',
+    \ 'ctagsargs' : '-f - --sort=yes --sro=»',
+    \ 'kinds' : [
+        \ 's:sections',
+        \ 'i:images'
+    \ ],
+    \ 'sro' : '»',
+    \ 'kind2scope' : {
+        \ 's' : 'section',
+    \ },
+    \ 'sort': 0,
+\ }
