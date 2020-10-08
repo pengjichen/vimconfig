@@ -6,8 +6,9 @@
 " 建议配置完成后将这个关闭，否则配置多了之后会很卡
 " autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
-" 关闭兼容模式
-set nocompatible
+"set nocompatible                                               " 关闭兼容模式
+
+set backspace=indent,eol,start                                  " 启用backspace
 
 set nu                                                          " 设置行号
 set cursorline                                                  "突出显示当前行
@@ -100,6 +101,10 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
+" 玩具插件
+"----------------------------------------------------------------
+Plugin 'matrix.vim--Yang'                   " 黑客帝国屏幕字符流效果
+
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 " 可以快速对齐的插件
 Plugin 'junegunn/vim-easy-align'
@@ -158,6 +163,13 @@ Plugin 'nsf/gocode', {'rtp': 'vim/'}
 " markdown 插件
 Plugin 'iamcco/mathjax-support-for-mkdp'
 Plugin 'iamcco/markdown-preview.vim'
+
+
+" c/c++插件
+"----------------------------------------------------------------
+Plugin 'a.vim'                              " 头文件和源文件切换
+Plugin 'octol/vim-cpp-enhanced-highlight'   " 自定义类型 变量的语法高亮
+
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -305,7 +317,7 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 " airline 状态栏
 set laststatus=2                                                " 永远显示状态栏
 set t_Co=256                                                    " 在windows中用xshell连接打开vim可以显示色彩
-let g:airline_theme='luna'                                      " 状态栏主题
+"let g:airline_theme='luna'                                      " 状态栏主题
 
 "==============================================================================
 "  其他插件配置
@@ -355,6 +367,17 @@ let g:tagbar_type_markdown = {
     \ },
     \ 'sort': 0,
 \ }
+
+
+" c/c++插件
+"----------------------------------------------------------------
+let g:cpp_class_scope_highlight = 1                    " 突出显示类作用于
+let g:cpp_member_variable_highlight = 1                " 成员变量突出显示
+let g:cpp_class_decl_gighlight = 1                     " 在声明中高亮显示类名
+let g:cpp_posix_standard = 1                           " POSIX功能的高亮显示
+"let g:cpp_experimental_simple_template_highlight = 1   " 模板功能突出显示
+"let g:cpp_experimental_template_highlight = 1          "文件较大时使用高亮模板速度较快，但会有一些小错误, 
+"let g:cpp_concepts_highlight = 1                       " 库概念突出显示
 
 
 "==============================================================================
