@@ -324,8 +324,11 @@ set t_Co=256                                                    " 在windows中�
 "==============================================================================
 
 " markdwon 的快捷键
-map <silent> <F5> <Plugin>MarkdownPreview
-map <silent> <F6> <Plugin>StopMarkdownPreview
+"map <silent> <F5> <Plugin>MarkdownPreview
+"map <silent> <F6> <Plugin>StopMarkdownPreview
+
+map exp   :MarkdownPreview<CR>
+map ext   :StopMarkdownPreview<CR>
 
 " tab 标签页切换快捷键
 :nn <Leader>1 1gt
@@ -339,6 +342,17 @@ map <silent> <F6> <Plugin>StopMarkdownPreview
 :nn <Leader>9 8gt
 :nn <Leader>0 :tablast<CR>
 
+
+" markdown预览配置
+" https://github.com/suan/vim-instant-markdown
+" start command: InstantMarkdownPreview InstantMarkdownStop
+" stop command: InstantMarkdownStop
+
+" 关闭自动打开预览
+"let g:instant_markdown_autostart = 0
+
+" 设置预览快捷键exp
+"map exp     :InstantMarkdownPreview<CR>
 
 "==============================================================================
 " ctags 插件
