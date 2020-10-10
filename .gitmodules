@@ -67,3 +67,6 @@
 [submodule "bundle/vim-cpp-enhanced-highlight"]
 	path = bundle/vim-cpp-enhanced-highlight
 	url = https://github.com/octol/vim-cpp-enhanced-highlight.git
+[submodule "bundle/vim-solidity"]
+	path = bundle/vim-solidity
+	url = https://github.com/tomlion/vim-solidity.git

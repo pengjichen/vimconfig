@@ -171,6 +171,9 @@ Plugin 'a.vim'                              " 头文件和源文件切换
 Plugin 'octol/vim-cpp-enhanced-highlight'   " 自定义类型 变量的语法高亮
 
 
+" solidity 插件
+Plugin 'tomlion/vim-solidity'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
