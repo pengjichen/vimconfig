@@ -1,7 +1,6 @@
 "==============================================================================
 " vim 内置配置 
 "==============================================================================
-
 " 设置 vimrc 修改保存后立刻生效，不用在重新打开
 " 建议配置完成后将这个关闭，否则配置多了之后会很卡
 " autocmd BufWritePost $MYVIMRC source $MYVIMRC
@@ -9,7 +8,6 @@
 "set nocompatible                                               " 关闭兼容模式
 
 set backspace=indent,eol,start                                  " 启用backspace
-
 set nu                                                          " 设置行号
 set cursorline                                                  "突出显示当前行
 " set cursorcolumn " 突出显示当前列
@@ -87,6 +85,14 @@ nmap ag     :Ack
 " 启用鼠标
 set mouse=a
 
+" 在当前文件中快速查找光标下的单词, 要了解详细信息，":help :lvimgrep"及":help :lgrep"
+nmap <leader>lv :lv /<c-r>=expand("<cword>")<cr>/ %<cr>:lw<cr>
+
+" 光标跨窗口移动 左移 右移 上移 下移
+nmap <leader>a <c-w>h
+nmap <leader>d <c-w>l
+nmap <leader>w <c-w>k
+nmap <leader>s <c-w>j
 
 "==============================================================================
 " 插件配置 
@@ -103,7 +109,8 @@ Plugin 'VundleVim/Vundle.vim'
 
 " 玩具插件
 "----------------------------------------------------------------
-Plugin 'matrix.vim--Yang'                   " 黑客帝国屏幕字符流效果
+" 黑客帝国屏幕字符流效果
+Plugin 'matrix.vim--Yang'
 
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 " 可以快速对齐的插件
@@ -164,7 +171,6 @@ Plugin 'nsf/gocode', {'rtp': 'vim/'}
 Plugin 'iamcco/mathjax-support-for-mkdp'
 Plugin 'iamcco/markdown-preview.vim'
 
-
 " c/c++插件
 "----------------------------------------------------------------
 Plugin 'a.vim'                              " 头文件和源文件切换
@@ -174,11 +180,17 @@ Plugin 'octol/vim-cpp-enhanced-highlight'   " 自定义类型 变量的语法高
 " solidity 插件
 Plugin 'tomlion/vim-solidity'
 
+" 语法检查器，需要配合solidity语法检查器一块使用 npm install -g solhint
+Plugin 'vim-syntastic/syntastic'
+
+" 语法检查
+"Plugin 'sohkai/syntastic-local-solhint'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 " 插件结束的位置，插件全部放在此行上面
-"call plug#end()
+" call plug#end()
 
 
 "==============================================================================
@@ -196,6 +208,7 @@ set background=dark " 主题背景 dark-深色; light-浅色
 " vim-go 插件
 "==============================================================================
 let g:go_fmt_command = "goimports" " 格式化将默认的 gofmt 替换
+let g:go_fmt_command = "gofmt"
 let g:go_autodetect_gopath = 1
 let g:go_list_type = "quickfix"
 
@@ -397,7 +410,21 @@ let g:cpp_posix_standard = 1                           " POSIX功能的高亮显
 "let g:cpp_concepts_highlight = 1                       " 库概念突出显示
 
 
-"==============================================================================
+" solidity 插件
+"----------------------------------------------------------------
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_solidity_checkers = ['solhint']
+
+
+" ==============================================================================
 " GVim 的配置
 "==============================================================================
 " 如果不使用 GVim ，可以不用配置下面的配置

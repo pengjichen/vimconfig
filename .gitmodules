@@ -70,3 +70,9 @@
 [submodule "bundle/vim-solidity"]
 	path = bundle/vim-solidity
 	url = https://github.com/tomlion/vim-solidity.git
+[submodule "bundle/syntastic-local-solhint"]
+	path = bundle/syntastic-local-solhint
+	url = https://github.com/sohkai/syntastic-local-solhint.git
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = https://github.com/vim-syntastic/syntastic.git
