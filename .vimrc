@@ -63,7 +63,7 @@ inoremap kl <ESC>
 
 " 保存 使用hj替换
 inoremap hj <ESC>:w<CR>
-noremap hj :w<CR>
+"noremap hj :w<CR>
 
 
 set fdm=syntax " 折叠方式, 用语法高亮来定义折叠
