@@ -95,7 +95,7 @@ nmap <leader>w <c-w>k
 nmap <leader>s <c-w>j
 
 " 设置默认保存目录
-exec 'cd ' . fnameescape("$HOME/workspace")
+" exec 'cd ' . fnameescape("$HOME/workspace")
 
 "==============================================================================
 " 插件配置 
