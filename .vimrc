@@ -427,6 +427,18 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_solidity_checkers = ['solhint']
 
 
+" snippets 代码补全插件
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsListSnippets = "<c-tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+" personal code snippets
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/codesnippets']
+
+
 " ==============================================================================
 " GVim 的配置
 "==============================================================================

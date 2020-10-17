@@ -7,8 +7,21 @@
 priority -50
 
 
-snippet function "function"
+snippet func
+function ${1}() {
+	
+}
+endsnippet
+
+snippet funcpub
 function ${1}() public {
 	
+}
+endsnippet
+
+
+snippet func256
+function ${1}() public returns (uint256){
+	return 0;	
 }
 endsnippet
