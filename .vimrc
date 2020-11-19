@@ -19,6 +19,9 @@ set shiftwidth=4                                                " 设置自动�
 set expandtab                                                   " 将tab转成space
 set autoindent                                                  " 继承前一行的缩进方式，适用于多行注释
 
+" 关闭vim提示音和闪烁提示
+set vb t_vb=
+
 " 定义快捷键的前缀，即<Leader>
 let mapleader=";" 
 
@@ -59,10 +62,10 @@ nmap new    :tabnew<CR>
 
 " ESC 可用ctrl + c代替，vim默认配置中已有
 " ESC 使用kl替换
-inoremap kl <ESC>
+inoremap kl <ESC>:w<CR>
 
 " 保存 使用hj替换
-inoremap hj <ESC>:w<CR>
+"inoremap hj <ESC>:w<CR>
 "noremap hj :w<CR>
 
 
@@ -138,6 +141,8 @@ Plugin 'jiangmiao/auto-pairs'
 
 " Vim状态栏插件，包括显示行号，列号，文件类型，文件名，以及Git状态
 Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'bling/vim-bufferline'
 
 " 有道词典在线翻译
 Plugin 'ianva/vim-youdao-translater'
@@ -240,9 +245,9 @@ nmap tr :NERDTreeToggle<cr>
 " 显示行号
 let NERDTreeShowLineNumbers=1
 " 打开文件时是否显示目录
-let NERDTreeAutoCenter=1
+let NERDTreeAutoCenter=0
 " 是否显示隐藏文件
-let NERDTreeShowHidden=0
+let NERDTreeShowHidden=1
 " 设置宽度
 " let NERDTreeWinSize=31
 " 忽略一下文件的显示
@@ -336,8 +341,14 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 " airline 状态栏
 set laststatus=2                                                " 永远显示状态栏
 set t_Co=256                                                    " 在windows中用xshell连接打开vim可以显示色彩
-"let g:airline_theme='luna'                                      " 状态栏主题
+"let g:airline_theme='luna'                                     " 状态栏主题
 
+
+let g:airline#extensions#bufferline#enabled = 1                 " 启用bufferline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'default'
 "==============================================================================
 "  其他插件配置
 "==============================================================================
@@ -424,7 +435,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-let g:syntastic_solidity_checkers = ['solhint']
+"let g:syntastic_solidity_checkers = ['solhint']
 
 
 " snippets 代码补全插件

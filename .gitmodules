@@ -76,3 +76,9 @@
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
 	url = https://github.com/vim-syntastic/syntastic.git
+[submodule "bundle/vim-bufferline"]
+	path = bundle/vim-bufferline
+	url = https://github.com/bling/vim-bufferline
+[submodule "bundle/vim-airline-themes"]
+	path = bundle/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes
