@@ -1,0 +1,15 @@
+snippet cerr 
+if err != nil{
+	log.Fatal(err)
+}
+$1
+endsnippet
+
+snippet rerr 
+if err != nil{
+	return nil, err	
+}
+$1
+endsnippet
+
+
