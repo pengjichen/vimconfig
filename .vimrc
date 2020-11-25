@@ -97,6 +97,12 @@ nmap <leader>d <c-w>l
 nmap <leader>w <c-w>k
 nmap <leader>s <c-w>j
 
+
+" for coding
+nmap make   :make<CR>
+nmap cw     :cw<CR>
+nmap qu     :cw<CR>
+
 " 设置默认保存目录
 " exec 'cd ' . fnameescape("$HOME/workspace")
 
@@ -168,6 +174,12 @@ Plugin 'acarapetis/vim-colors-github'
 " colorscheme one 
 Plugin 'rakr/vim-one'
 
+" ack全局搜索插件 需要ag工具 安装如下
+" brew install the_silver_searcher
+" sudo apt install silversearcher-ag
+Plugin 'mileszs/ack.vim'
+
+
 " go 主要插件
 Plugin 'fatih/vim-go', { 'tag': '*' }
 " go 中的代码追踪，输入 gd 就可以自动跳转
@@ -215,8 +227,10 @@ set background=dark " 主题背景 dark-深色; light-浅色
 "==============================================================================
 " vim-go 插件
 "==============================================================================
-let g:go_fmt_command = "goimports" " 格式化将默认的 gofmt 替换
-let g:go_fmt_command = "gofmt"
+" 格式化将默认的 gofmt 替换
+let g:go_fmt_command = "goimports" 
+"let g:go_fmt_command = "goimports"
+"let g:go_fmt_command = "gofmt"
 let g:go_autodetect_gopath = 1
 let g:go_list_type = "quickfix"
 
