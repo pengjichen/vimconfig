@@ -19,6 +19,10 @@ set shiftwidth=4                                                " 设置自动�
 set expandtab                                                   " 将tab转成space
 set autoindent                                                  " 继承前一行的缩进方式，适用于多行注释
 
+set list " 显示特殊符号
+set listchars=tab:›\ ,trail:•,extends:>,precedes:<,nbsp:.
+
+
 " 关闭vim提示音和闪烁提示
 set vb t_vb=
 
@@ -63,6 +67,8 @@ nmap new    :tabnew<CR>
 " ESC 可用ctrl + c代替，vim默认配置中已有
 " ESC 使用kl替换
 inoremap kl <ESC>:w<CR>
+inoremap gs <ESC>:w<CR>
+noremap gs :w<CR>
 
 " 保存 使用hj替换
 "inoremap hj <ESC>:w<CR>
@@ -181,7 +187,7 @@ Plugin 'mileszs/ack.vim'
 
 
 " go 主要插件
-Plugin 'fatih/vim-go', { 'tag': '*' }
+"Plugin 'fatih/vim-go', { 'tag': '*' }
 " go 中的代码追踪，输入 gd 就可以自动跳转
 Plugin 'dgryski/vim-godef'
 " go 中代码提示
@@ -228,7 +234,7 @@ set background=dark " 主题背景 dark-深色; light-浅色
 " vim-go 插件
 "==============================================================================
 " 格式化将默认的 gofmt 替换
-let g:go_fmt_command = "goimports" 
+"let g:go_fmt_command = "goimports" 
 "let g:go_fmt_command = "goimports"
 "let g:go_fmt_command = "gofmt"
 let g:go_autodetect_gopath = 1
